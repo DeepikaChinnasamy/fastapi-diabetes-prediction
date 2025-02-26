@@ -3,4 +3,4 @@ uvicorn
 scikit-learn
 numpy
 pandas
-
+prometheus-fastapi-instrumentator

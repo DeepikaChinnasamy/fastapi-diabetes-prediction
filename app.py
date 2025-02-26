@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 from pydantic import BaseModel
 import logging
+from prometheus_fastapi_instrumentator import Instrumentator
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -23,6 +24,9 @@ except Exception as e:
 
 # Initialize FastAPI app
 app = FastAPI(title="Diabetes Prediction API", version="1.0")
+
+# Add Prometheus Monitoring
+Instrumentator().instrument(app).expose(app)
 
 # Define the input schema
 class DiabetesInput(BaseModel):
